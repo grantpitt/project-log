@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap');
+
+html, body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'EB Garamond', serif;
+    color: rgb(47, 47, 47);
+    overflow-x: hidden;
+}
+
+#header {
+    box-sizing: border-box;
+    background-color: #b1ff67;
+    color: rgb(47, 47, 47);
+    border-bottom: 2px solid rgb(47, 47, 47);
+    font-size: 38px;
+    padding: 10px 25px 10px 25px;
+    word-wrap: break-word;
+
+    /* sticky boi */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 9;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(47, 47, 47);
+}
+
+
+.container {
+    box-sizing: border-box;
+    max-width: 1600px;
+    margin: auto;
+    padding: 25px 40px 25px 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    gap: 25px;
+}
+
+#cc {
+    grid-column: span 2;
+}
+
+
+.side {
+    box-sizing: border-box;
+    grid-column: span 1;
+    font-size: 24px;
+    line-height: 34px;
+
+    display: flex;
+    flex-direction: column;
+    padding: 30px 15px 15px 15px;
+}
+
+@media (max-width: 1150px) {
+    /* CSS that should be displayed if width is equal to or less than 800px goes here */
+    .container {
+        width: min(100vw, 750px);
+        grid-template-columns: auto;
+        padding: 15px 25px 15px 25px;
+        gap: 15px;
+    }
+    #cc {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 540px) {
+    /* CSS that should be displayed if width is equal to or less than 800px goes here */
+    .container {
+        padding: 15px 10px 15px 10px;
+        gap: 15px;
+    }
+    #header {
+        font-size: 33px;
+    }
+    .side {
+        font-size: 20px;
+    }
+    .row {
+        font-size: 20px;
+    }
+    button {
+        font-size: 20px;
+    }
+}
+
+p {
+    word-wrap: break-word;
+    text-align: justify;
+    max-width: 450px;
+    margin: 0 auto 0 auto;
+}
+
+hr {
+    margin: 6% 0 6% 0;
+    border: none;
+    height: 3px;
+    background-color: lightgray;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 45px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+label {
+    padding-right: 15px;
+}
+
+#n {
+    width: 100px;
+    font-size: 40px;
+    border: 2px solid rgb(47, 47, 47);
+    border-radius: 10px;
+    font-family: 'EB Garamond', serif;
+    text-align: center;
+    color: rgb(47, 47, 47);
+    padding: 0;
+}
+
+#n:focus {
+    outline: none;
+}
+
+#info {
+    font-size: 24px;
+}
+
+button {
+    color: white;
+    background-color: rgb(178, 181, 185);
+    height: 50px;
+    width: 50%;
+    flex-grow: 1;
+    border: 3px solid  rgb(130, 132, 134);
+    padding: 0 10px 0 1 10px;
+    font-family: 'EB Garamond', serif;
+    font-size: 24px;
+}
+
+.btn-group {
+    display: inline-flex;
+    flex: 1;
+    /* max-width: 240px; */
+    max-width: 400px;
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+.btn-group button:first-child {
+    border-radius: 10px 0 0 10px; /* round left borders */
+}
+
+.btn-group button:last-child {
+    border-radius: 0 10px 10px 0; /* round right borders */
+}
+
+button:hover {
+    background-color: rgb(151, 153, 156);
+}
+
+button:focus {
+    outline: none;
+}
+
+.pressed {
+    background-color: rgb(151, 153, 156);
+}

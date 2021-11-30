@@ -1,0 +1,232 @@
+/* Include the Open Sans font */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+
+html, body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    color: rgb(47, 47, 47);
+    overflow-x: hidden;
+
+    background-color: #ffffff !important;
+}
+
+.topSection {
+    width: 740px;
+    max-width: calc(100% - 60px);
+    height: 335px;
+    margin: 20px 30px;
+    background-color: rgb(255, 235, 255);
+    border: 3px solid plum;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(5px, 1fr));
+    gap: 30px;
+}
+
+.info {
+    grid-column: span 4;
+    padding: 15px;
+}
+
+.info h2 {
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 600;
+}
+
+.info p {
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+#email {
+    font-family: 'Open Sans', sans-serif !important;
+    word-wrap: break-word;
+}
+
+#emailLink {
+    text-decoration: none;
+    color: dodgerblue;
+}
+
+#emailLink:hover {
+    text-decoration: underline;
+    color: steelblue
+}
+
+.sectionTitle {
+    font-family: 'Open Sans', sans-serif !important;
+    font-weight: 600;
+    margin-top: 30px;
+    font-size: 34px;
+}
+
+.appContainer {
+    margin: auto !important;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 0px;
+    margin-bottom: 20px !important;
+}
+
+/* #pageContainer {
+    border: 3px solid steelblue;
+    background-color: rgb(234, 245, 255);
+} */
+
+.link {
+    color: white;
+    border: 3px solid #c2c2c2;
+    background-color: #fafafa;
+    display: block;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    margin: auto;
+    box-sizing: border-box;
+    position: relative;
+    /*box-shadow: 0 5px 10px 0px rgb(226, 226, 226);*/
+    /*padding: 6px;*/
+
+    /*transition: top ease 0.5s;*/
+}
+
+.link:hover {
+    /*margin-top: -2px;*/
+    /*border: 3px solid #3fa1fc;*/
+    /*box-shadow: 0 5px 14px 0px rgb(212, 212, 212);*/
+}
+
+.name  {
+    font-family: 'Open Sans', sans-serif !important;
+    width: 100%;
+    height: 100%;
+    font-size: 24px;
+    color: rgb(13, 32, 66);
+    padding: 10px;
+    display: inline-block;
+    word-wrap: break-word;
+    font-weight: 600;
+}
+
+.name:hover {
+    text-decoration: underline #fcd03f 3px;
+}
+
+.highlight {
+    width: 280px;
+    height: 175px;
+}
+
+
+
+.left-hero {
+    padding: 20px 20px 35px 20px;
+    grid-column: span 7;
+    position: relative;
+    box-sizing: border-box;
+    display: block;
+}
+
+.hero-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: block;
+    box-sizing: border-box;
+}
+
+.object-fit {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0
+    }
+    100%{
+        opacity: 1
+    }
+}
+
+.object-fit img {
+    animation: 0.9s 0.3s fadeIn both;
+    position: relative;
+    width: 101%;
+    height: 101% !important;
+    max-width: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    display: block;
+    max-width: 100%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    aspect-ratio: auto 512 / 976;
+}
+
+
+
+/* Responsiveness is good */
+@media (max-width: 1000px) {
+    .highlight {
+        width: 205px;
+        height: 130px;
+    }
+    .name  {
+        font-size: 19px;
+    }
+    .sectionTitle {
+        margin-top: 20px;
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 815px) {
+    .topSection {
+        max-width: calc(100% - 30px);
+        margin: 20px 15px;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 560px) {
+    .topSection {
+        max-width: calc(100% - 20px);
+        margin: 20px 10px;
+        gap: 10px;
+        height: 300px;
+    }
+    .info h2 {
+        font-size: 20px;
+    }
+    .info p {
+        font-size: 14px;
+    }
+    .info {
+        padding: 4px;
+    }
+    .left-hero {
+        padding: 10px 10px 18px 10px;
+    }
+    .highlight {
+        width: 182px;
+        height: 110px;
+    }
+    .name  {
+        font-size: 16px;
+        padding: 5px 7px 0 7px;
+    }
+    .sectionTitle {
+        margin-top: 5px;
+        font-size: 24px;
+    }
+}

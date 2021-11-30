@@ -1,0 +1,237 @@
+/* Include the PT Sans font */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+
+html, body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'PT Sans', sans-serif !important;
+    font-weight: 400;
+    color: rgb(47, 47, 47);
+    overflow-x: hidden;
+}
+
+
+
+.topSection {
+    width: 100%;
+    height: 335px;
+    background-color: rgb(226, 242, 255);
+    border: 4px solid steelblue;
+    padding: 18px;
+}
+
+.myclose {
+    height: 25px;
+    float: right;
+    border: 2px solid black;
+    border-radius: 0px;
+}
+
+.modalTitle {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.modalText {
+    font-size: 18px;
+}
+
+
+
+#header {
+    box-sizing: border-box;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #dfdfdf;
+    color: inherit !important;
+    font-weight: 700;
+    font-size: 28px;
+    padding: 10px 25px 10px 25px;
+    word-wrap: break-word;
+
+    /* sticky boi */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 9;
+}
+
+a {
+    text-decoration: none;
+    color: inherit !important;
+}
+
+
+.mycontainer {
+    box-sizing: border-box;
+    max-width: 1500px;
+    margin: auto;
+    padding: 30px 140px 30px 140px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    gap: 35px;
+}
+
+#cc {
+    grid-column: span 2;
+
+    /* overflow: scroll; */
+}
+
+canvas {
+    margin: auto;
+    outline: 4px solid rgb(238, 238, 238);
+}
+
+.side {
+    margin-top: -12px;
+    box-sizing: border-box;
+    grid-column: span 1;
+    font-size: 24px;
+}
+
+button {
+    color: white;
+    background-color: #f8f8f8;
+    height: 50px;
+    max-width: 95px;
+    flex-grow: 1;
+    border: 2px solid  #dfdfdf;
+    padding: 0 10px 0 1 10px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 30px;
+    border-radius: 6px;
+    font-family: inherit;
+}
+
+button:hover {
+    background-color: rgb(241, 241, 241);
+}
+
+button:focus {
+    outline: none;
+}
+
+@media (max-width: 1150px) {
+    /* CSS that should be displayed if width is equal to or less than 800px goes here */
+    .mycontainer {
+        width: min(100vw, 750px);
+        grid-template-columns: auto;
+        padding: 15px 25px 15px 25px;
+        gap: 15px;
+    }
+    #cc {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 540px) {
+    /* CSS that should be displayed if width is equal to or less than 800px goes here */
+    .mycontainer {
+        padding: 15px 10px 15px 10px;
+    }
+    #header {
+        font-size: 24px;
+    }
+    p {
+        font-size: 18px;
+    }
+    .row {
+        font-size: 20px;
+    }
+    label {
+        font-size: 20px;
+    }
+    button {
+        height: 40px;
+        max-width: 90px;
+        font-size: 20px;
+    }
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+}
+
+legend {
+    font-weight: 600;
+    color: rgb(47, 47, 47);
+    margin-bottom: 6px !important;
+}
+
+fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+
+    margin: auto;
+    max-width: 100%;
+    /* border: 3px solid rgb(203, 209, 214) !important; */
+    margin-bottom: 15px !important;
+    align-content: space-around;
+    /* padding: 2px; */
+}
+
+#controls {
+    justify-content: space-around;
+}
+
+#dynamics {
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#style {
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#colors {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#curRule {
+    width: 100%;
+    font-size: 32px;
+    border: none;
+    font-family: inherit;
+    text-align: center;
+    color: rgb(47, 47, 47);
+}
+
+#curRule:focus {
+    outline: none;
+}
+
+#size {
+    width: 70px;
+    font-family: inherit;
+}
+
+
+fieldset div {
+    /* margin-bottom: 5px;
+    margin-top: 5px; */
+    font-weight: 300 !important;
+}
+
+label {
+    padding-right: 5px;
+    margin-right: 0px;
+    font-size: 20px;
+    font-weight: 300 !important;
+}
+
+.dim {
+    font-size: 18px;
+    font-family: inherit;
+    text-align: center;
+    border: 2px solid rgb(47, 47, 47);
+    border-radius: 5px;
+    color: rgb(47, 47, 47);
+}

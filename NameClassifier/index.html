@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Classifier</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+    <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+          <div class="topSection">
+                <button type="button" class="myclose" data-dismiss="modal">&times;</button>
+                <span class="modalTitle">Info</span>
+                <br>
+                <span class=modalText>This name classifier uses the naive bayes algorithm - demo <a href="../NaiveBayes/" style="color: dodgerblue !important;">here</a> - on the features of a handful of girl, boy, and dog names in order to classify a given name. It's pretty bad as it classifies boy names far more often then it should but adding more names to the training data would negate the idea of it being predictive.</span>
+        </div>
+      
+    </div>
+  </div>
+
+    <!-- Header -->
+    <div id="header">
+        <a href="../">Projects</a> / 
+        <a href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier" target="_blank">Name Classifier</a>
+    </div>
+    
+    <div class="input">
+        <label for="field">Enter name</label>
+        <input type="text" id="field">
+    </div>
+
+    <div id="indicator"></div>
+
+    <script src="main.js"></script>
+</body>
+</html>

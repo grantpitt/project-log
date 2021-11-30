@@ -1,0 +1,51 @@
+@font-face { 
+    font-family: Jakarta;
+    font-weight: 400;
+    src: url('../fonts/PlusJakartaSans-Regular.ttf');
+}
+@font-face {
+    font-family: Jakarta;
+    font-weight: 500;
+    src: url('../fonts/PlusJakartaSans-Medium.ttf');
+}
+@font-face { 
+    font-family: Jakarta; 
+    font-weight: 600; 
+    src: url('../fonts/PlusJakartaSans-Bold.ttf'); 
+}
+@font-face {
+    font-family: Jakarta;
+    font-weight: 700;
+    src: url('../fonts/PlusJakartaSans-ExtraBold.ttf');
+}
+@font-face {
+    font-family: Jakarta;
+    font-weight: 200;
+    src: url('../fonts/PlusJakartaSans-ExtraLight.ttf');
+}
+@font-face {
+    font-family: Jakarta;
+    font-weight: 300;
+    src: url('../fonts/PlusJakartaSans-Light.ttf');
+}
+
+body {
+    font-family: Jakarta;
+    padding: 0px 50px 30px 50px;
+    background-color: rgb(18, 18, 19);
+    color: rgb(200, 50, 100);
+}
+
+h1 {
+    font-size: 65px;
+    font-weight: 600;
+}
+
+p {
+    color: whitesmoke;
+    font-size: 40px;
+}
+
+canvas {
+    outline: 2px solid;
+}

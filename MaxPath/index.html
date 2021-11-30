@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Max Path</title>
+    <link rel="shortcut icon" href="../icon.png" />
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Include the p5.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header">
+        <a href="../">Projects</a> / 
+        <a href="#" target="_blank">Max Path</a>
+    </div>
+
+    <!-- The container to space out canvas and panel responsively -->
+    <div class="container">
+
+        <!-- The parent div for the p5.js canvas -->
+        <div id="gridContainer"></div>
+
+        <!-- The panel with discription and controls -->
+        <div class="panel">
+            <!-- The discription -->
+            <p>
+                Finds the path from the top left cell to the bottom right that maximizes the sum of 
+                the cells. The path can only move down or right.
+            </p>
+            <hr>
+            <!-- The controls to adjust parameters -->
+            <div class="controls">
+                <!-- Each control is contained in a row div -->
+                <div class="row">
+                    <label>Size (nxn)</label>
+                    <div class='btn-group'>
+                        <button id="size5">5</button>
+                        <button id="size10">10</button>
+                        <button id="size20">20</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label>Cell Values</label>
+                    <button style="border-radius: 10px;" id="newVals">New</button>
+                </div>
+
+                <div class="row">
+                    <label>Max Sum:</label>
+                    <span id="maxSum"></span>
+                </div>
+
+            </div>
+            <!-- End of controls -->
+        </div>
+        <!-- End of the panel -->
+    </div>
+    <!-- End of the body Container -->
+
+    <!-- Link the JS script -->
+    <script src="main.js"></script>
+    
+</body>
+</html>

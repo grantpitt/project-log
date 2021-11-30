@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap');
+
+html, body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'EB Garamond', serif;
+    color: rgb(47, 47, 47);
+}
+
+#header {
+    box-sizing: border-box;
+    background-color: rgb(18, 106, 207);
+    color: whitesmoke;
+    font-size: 43px;
+    padding: 10px 60px 10px 60px;
+    word-wrap: break-word;
+
+    /* sticky boi */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 9;
+}
+
+a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.container {
+    box-sizing: border-box;
+    padding: 25px 40px 25px 40px;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    gap: 40px;
+}
+
+#cc {
+    grid-column: span 3;
+}
+
+
+.side {
+    grid-column: span 2;
+
+    font-size: 24px;
+    line-height: 34px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+p {
+    word-wrap: break-word;
+    text-align: justify;
+    max-width: 450px;
+    margin: 0 auto 0 auto;
+}
+
+hr {
+    margin: 6% 0 7% 0;
+    border: none;
+    height: 2px;
+    background-color: lightgray;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 28px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+label {
+    padding-right: 15px;
+}
+
+button {
+    color: white;
+    background-color: rgb(178, 181, 185);
+    height: 50px;
+    min-width: 90px;
+    max-width: 110px;
+    flex-grow: 1;
+    border: 3px solid  rgb(130, 132, 134);
+    font-family: 'EB Garamond', serif;
+    font-size: 26px;
+}
+
+.btn-group {
+    display: inline-flex;
+    flex: 1;
+    max-width: 240px;
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+.btn-group button:first-child {
+    border-radius: 10px 0 0 10px; /* round left borders */
+}
+
+.btn-group button:last-child {
+    border-radius: 0 10px 10px 0; /* round right borders */
+}
+
+button:hover {
+    background-color: rgb(151, 153, 156);
+}
+
+button:focus {
+    outline: none;
+}
+
+.pressed {
+    background-color: rgb(151, 153, 156);
+}

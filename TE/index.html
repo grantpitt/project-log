@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Editor</title>
+
+    <link rel="shortcut icon" href="../icon.png" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div id="bodyContainer">
+        <div id="header">
+            <a href="../">Projects</a> / 
+            <a href="#hello" target="_blank">TE</a>
+        </div>
+
+        <div id="outer">
+            <div id="block1" class="block">
+                
+                <div id="drop-zone">
+                    Drop files here...
+                    <div id="clickHere">
+                        or click here..
+                        <input type="file" name="file" id="file" onchange="loadFile(event)"/>
+                    </div>
+                </div>
+
+            </div>
+            <div id="slider"><div id="line"></div></div>
+            <div id="block2" class="block">
+
+                <div id="content">
+                    <div id="postSection"></div>
+                    <div id="cc"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    
+</body>
+</html>

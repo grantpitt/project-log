@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACME | Lorenz</title>
+
+    <link rel="stylesheet" href="../../web-assets/fonts/plus-jakarta-sans.css">
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Include the p5.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+
+</head>
+<body>
+
+    <header>
+        <div class="primary-nav">
+            <div class="name">
+                <a id="title" href="../">Applied and Computational Mathematics</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="page">
+    <div class="gap-top-header"></div>
+    <div class="half-header-gap"></div>
+
+    <article class="page white article-text">
+        <h2 class="article-title">Lorenz Systems</h2>
+        <p class="article-p">They are very cool. The Lorenz system is a system of ordinary differential equations first studied by Edward Lorenz. It is notable for having chaotic solutions for certain parameter values and initial conditions. The Lorenz system is a system of ordinary differential equations first studied by Edward Lorenz. It is notable for having chaotic solutions for certain parameter values and initial conditions. In particular, the Lorenz attractor is a set of chaotic solutions of the Lorenz system. In popular media the 'butterfly effect' stems from the real-world implications of the Lorenz attractor, i.e. that in any physical system, in the absence of perfect knowledge of the initial conditions (even the minuscule disturbance of the air due to a butterfly flapping its wings), our ability to predict its future course will always fail. This underscores that physical systems can be completely deterministic and yet still be inherently unpredictable even in the absence of quantum effects. The shape of the Lorenz attractor itself, when plotted graphically, may also be seen to resemble a butterfly.</p>
+    </article>
+
+    <div class="half-header-gap dark-blue"></div>
+
+    <article class="article-listing">
+
+        <div class="media66">
+            <img class="cover" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/%C4%80l%C4%AB_Q%C4%81p%C5%AB%27s_ceiling.jpg/1920px-%C4%80l%C4%AB_Q%C4%81p%C5%AB%27s_ceiling.jpg" />
+        </div>
+    
+        <section class="content34">
+            <p>Abandoned, graffiti-covered building in Floyd Bennett Field. This was an inert storage location during the time the airport served as Naval Air Station New York in the 1940s. It was decommissioned in 1971 and transferred to the National Park Service in 1972.</p>
+        </section>
+
+    </article>
+
+    <div class="half-header-gap"></div>
+
+    <article class="page white article-text">
+        <p class="article-p">They are very cool. The Lorenz system is a system of ordinary differential equations first studied by Edward Lorenz. It is notable for having chaotic solutions for certain parameter values and initial conditions. The Lorenz system is a system of ordinary differential equations first studied by Edward Lorenz. It is notable for having chaotic solutions for certain parameter values and initial conditions. In particular, the Lorenz attractor is a set of chaotic solutions of the Lorenz system. In popular media the 'butterfly effect' stems from the real-world implications of the Lorenz attractor, i.e. that in any physical system, in the absence of perfect knowledge of the initial conditions (even the minuscule disturbance of the air due to a butterfly flapping its wings), our ability to predict its future course will always fail. This underscores that physical systems can be completely deterministic and yet still be inherently unpredictable even in the absence of quantum effects. The shape of the Lorenz attractor itself, when plotted graphically, may also be seen to resemble a butterfly.
+        </p>
+        <br>
+        <p class="article-p">They are very cool. The Lorenz system is a system of ordinary differential equations first studied by Edward Lorenz. It is notable for having chaotic solutions for certain parameter values and initial conditions. The Lorenz system is a system of ordinary differential equations first studied by Edward Lorenz. It is notable for having chaotic solutions for certain parameter values and initial conditions. In particular, the Lorenz attractor is a set of chaotic solutions of the Lorenz system. In popular media the 'butterfly effect' stems from the real-world implications of the Lorenz attractor, i.e. that in any physical system, in the absence of perfect knowledge of the initial conditions (even the minuscule disturbance of the air due to a butterfly flapping its wings), our ability to predict its future course will always fail. This underscores that physical systems can be completely deterministic and yet still be inherently unpredictable even in the absence of quantum effects. The shape of the Lorenz attractor itself, when plotted graphically, may also be seen to resemble a butterfly.</p>
+    </article>
+
+    <div class="half-header-gap"></div>
+
+    <article class="article-listing">
+
+        <div class="media66">
+
+            <div id="canvas-container"></div>
+        
+        </div>
+    
+        <section class="content34">
+            
+            <div class="controls">
+                <!-- Each control is contained in a row div -->
+                <div class="row">
+                    <label>Datapoints</label>
+                    <div class='btn-group'>
+                        <button id="add">Add</button>
+                        <button id="take">Take</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </article>
+
+    <div class="half-header-gap"></div>
+
+    <article class="page white article-text">
+        <p class="article-p">They are very cool. The Lorenz system is a system of ordinary differential equations first studied by Edward Lorenz. It is notable for having chaotic solutions for certain parameter values and initial conditions. The Lorenz system is a system of ordinary differential equations first studied by Edward Lorenz. It is notable for having chaotic solutions for certain parameter values and initial conditions. In particular, the Lorenz attractor is a set of chaotic solutions of the Lorenz system. In popular media the 'butterfly effect' stems from the real-world implications of the Lorenz attractor, i.e. that in any physical system, in the absence of perfect knowledge of the initial conditions (even the minuscule disturbance of the air due to a butterfly flapping its wings), our ability to predict its future course will always fail. This underscores that physical systems can be completely deterministic and yet still be inherently unpredictable even in the absence of quantum effects. The shape of the Lorenz attractor itself, when plotted graphically, may also be seen to resemble a butterfly.
+        </p>
+        <br>
+        <p class="article-p">They are very cool. The Lorenz system is a system of ordinary differential equations first studied by Edward Lorenz. It is notable for having chaotic solutions for certain parameter values and initial conditions. The Lorenz system is a system of ordinary differential equations first studied by Edward Lorenz. It is notable for having chaotic solutions for certain parameter values and initial conditions. In particular, the Lorenz attractor is a set of chaotic solutions of the Lorenz system. In popular media the 'butterfly effect' stems from the real-world implications of the Lorenz attractor, i.e. that in any physical system, in the absence of perfect knowledge of the initial conditions (even the minuscule disturbance of the air due to a butterfly flapping its wings), our ability to predict its future course will always fail. This underscores that physical systems can be completely deterministic and yet still be inherently unpredictable even in the absence of quantum effects. The shape of the Lorenz attractor itself, when plotted graphically, may also be seen to resemble a butterfly.</p>
+    </article>
+
+    <div class="half-header-gap"></div>
+
+    </main>
+
+    <script src="../main.js"></script>
+    <script src="./sketch.js"></script>
+</body>
+</html>

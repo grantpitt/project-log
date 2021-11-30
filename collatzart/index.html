@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collatz Art</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+
+    <style>
+        :root {
+            --harvard-dark-2: #1e1e1e;
+            --cream: #faf9f8;
+            --earth-grey-1: #f5f5f5f5;
+            --earth-grey-1dot5: #e7e7e7;
+            --earth-grey-4: #B0B0B0;
+        }
+
+        body {
+            background-color: var(--cream);
+            color: var(--harvard-dark-2);
+            overflow-x: hidden;
+            font-family: Georgia;
+            padding: 20px 40px;
+            margin: 0;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #canvasParent {
+            margin-bottom: 25px;
+            margin-right: 25px;
+        }
+
+        #controls {
+            font-family: Arial, Helvetica, sans-serif;
+            box-sizing: border-box;
+            min-width: 300px;
+            max-width: 400px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 4px 12px;
+            background: rgba(255, 255, 255, 0.75);
+            box-shadow: 0 8px 32px 0 rgba(40, 55, 105, 0.1);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            height: max-content;
+        }
+
+        .row {
+            padding: 4px;
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            justify-content: space-between;
+        }
+
+        .row:not(:last-child) {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .row label {
+            order: 1;
+            font-size: 14px;
+            font-weight: 400;
+            cursor: default;
+            border: none;
+        }
+
+        .row input, .row div, .row form {
+            order: 2;
+        }
+
+        input[type=text] {
+            max-width: 120px;
+            text-align: center;
+        }
+
+        button {
+            padding: 2px 12px;
+        }
+
+        input[type=text], button {
+            background-color: var(--earth-grey-1dot5);
+            order: 1;
+            color: var(--harvard-dark-2);
+            background-color: var(--earth-grey-1);
+            border: 1px solid  var(--earth-grey-4);
+            font-family: inherit;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <h1>Collatz Art</h1>
+    <main>
+        <div id="canvasParent"></div>
+        <section id="controls">
+            <div class="row">
+                <label>Colors</label>
+                <button @click="changeColors">New</button>
+            </div>
+            <div class="row">
+                <label>Angle</label>
+                <input @change="recompute" v-model="angle" type="range" min="0.01" max="0.40" step="0.01" class="slider">
+            </div>
+            <div class="row">
+                <label>Length</label>
+                <input @change="recompute" v-model="length" type="range" min="3" max="45" step="1" class="slider">
+            </div>
+            <div class="row">
+                <label>Range</label>
+                <input @change="recompute" v-model="seedRange" type="range" min="25" max="3000" step="10" class="slider">
+            </div>
+            <div class="row">
+                <label>Weight</label>
+                <input @change="recompute" v-model="weight" type="range" min="1" max="20" step="1" class="slider">
+            </div>
+            <div class="row">
+                <label>Oppacity</label>
+                <input @change="changeOppacity" v-model="oppacity" type="range" min="1" max="255" step="1" class="slider">
+            </div>
+            <div class="row">
+                <label>Start X</label>
+                <input @change="recompute" v-model="startX" type="range" min="1" max="700" step="1" class="slider">
+            </div>
+            <div class="row">
+                <label>Start Y</label>
+                <input @change="recompute" v-model="startY" type="range" min="1" max="500" step="1" class="slider">
+            </div>
+            <div class="row">
+                <label>f(x) = { even:</label>
+                <input @change="updateEvenRule" type="text" value="x / 2" ref="evenRule">
+            </div>
+            <div class="row">
+                <label>f(x) = { odd:</label>
+                <input @change="updateOddRule" type="text" value="(3 * x) + 1" ref="oddRule">
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <script>
+        let app = new Vue({
+            el: "#controls",
+            data: {
+                angle: 0.26,
+                length: 35,
+                seedRange: 335,
+                weight: 10,
+                oppacity: 51,
+                startX: 28,
+                startY: 390,
+                backgroundColor: "#053191",
+                drawingColor: "#1c91ff33",
+                evenUpdate: (x) => x / 2,
+                oddUpdate: (x) => (3 * x) + 1,
+                currentSeed: 1,
+            },
+            methods: {
+                recompute() {
+                    this.angle = parseFloat(this.angle);
+                    this.length = parseInt(this.length);
+                    this.seedRange = parseInt(this.seedRange);
+                    this.weight = parseInt(this.weight);
+                    this.startX = parseInt(this.startX);
+                    this.startY = parseInt(this.startY);
+                    this.restart();
+                },
+                changeColors() {
+                    this.backgroundColor = this.randomHexColor();
+                    this.drawingColor = this.randomHexColor() + this.hexOppacity();
+                    this.restart();
+                },
+                randomHexColor() {
+                    return "#" + Math.floor(Math.random()*16777215).toString(16).padStart(6, "0")
+                },
+                changeOppacity() {
+                    this.oppacity = parseInt(this.oppacity);
+                    this.drawingColor = this.drawingColor.substring(0, 7) + this.hexOppacity();
+                    this.restart();
+                },
+                hexOppacity() {
+                    return this.oppacity.toString(16).padStart(2, "0");
+                },
+                updateEvenRule() {
+                    try {
+                        let func = this.createFunction(this.$refs.evenRule.value);
+                        this.evenUpdate = func;
+                        this.restart();
+                    }
+                    catch(e) {
+                        console.log(e);
+                    }
+                },
+                updateOddRule() {
+                    try {
+                        let func = this.createFunction(this.$refs.oddRule.value);
+                        this.oddUpdate = func;
+                        this.restart();
+                    }
+                    catch(e) {
+                        console.log(e);
+                    }
+                },
+                createFunction(functionString) {
+                    return new Function("x", `return ${functionString}`);
+                },
+                restart() {
+                    background(this.backgroundColor);
+                    this.currentSeed = 1;
+                    loop();
+                }
+            }
+        });
+
+        class Collatz {
+            constructor(seed) {
+                this.seed = seed;
+                this.sequence = [];
+            }
+
+            getSequence() {
+                if (this.sequence.length == 0) {
+                    this.computeSequence();
+                }
+                return this.sequence;
+            }
+
+            computeSequence() {
+                this.sequence.push(this.seed);
+                let current = this.seed;
+                while (current != 1 && this.sequence.length < 200) {
+                    current = this.update(current);
+                    this.sequence.push(current);
+                }
+            }
+
+            update(current) {
+                if (current % 2 == 0) {
+                    return app.evenUpdate(current);
+                }
+                else {
+                    return app.oddUpdate(current);
+                }
+            }
+        }
+
+        class Visualizer {
+            constructor(sequence) {
+                this.sequence = sequence;
+                this.currentPoint = {
+                    x: app.startX,
+                    y: app.startY
+                }
+                this.currentAngle = HALF_PI;
+            }
+
+            draw() {
+                this.setDrawingProperties()
+                this.sequence.reverse();
+                beginShape();
+                vertex(this.currentPoint.x, this.currentPoint.y);
+                for (let val of this.sequence) {
+                    this.update(val);
+                    vertex(this.currentPoint.x, this.currentPoint.y);
+                }
+                endShape();
+            }
+
+            setDrawingProperties() {
+                stroke(app.drawingColor);
+                strokeWeight(app.weight);
+                noFill();
+            }
+
+            update(val) {
+                if (val % 2 == 0) {
+                    this.currentAngle -= app.angle;
+                }
+                else {
+                    this.currentAngle += app.angle;
+                }
+                this.currentPoint.x += (app.length * cos(this.currentAngle));
+                this.currentPoint.y -= (app.length * sin(this.currentAngle));
+            }
+        }
+
+        function setup() {
+            let canvas = createCanvas(700, 500);
+            canvas.parent("#canvasParent");
+            background(app.backgroundColor);
+        }
+
+        function draw() {
+            let collatz = new Collatz(app.currentSeed++);
+            let visualizer = new Visualizer(collatz.getSequence());
+            visualizer.draw();
+            if (app.currentSeed == app.seedRange) {
+                noLoop();
+            }
+        }
+    </script>
+</body>
+</html>

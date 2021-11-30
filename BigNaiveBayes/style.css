@@ -1,0 +1,144 @@
+/* Include the PT Sans font */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+
+html, body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 400;
+    color: rgb(47, 47, 47);
+    overflow-x: hidden;
+}
+
+#header {
+    box-sizing: border-box;
+    background-color: #f8f8f8;
+    border-bottom: 2px solid #cacaca;
+    font-weight: 700;
+    font-size: 28px;
+    padding: 10px 25px 10px 25px;
+    word-wrap: break-word;
+
+    /* sticky boi */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 9;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+#canvasContainer {
+    width: 100%;
+}
+
+canvas {
+    margin: auto;
+}
+
+#controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    background-color: #e7e7e7;
+    border-bottom: 2px solid #cacaca;
+    padding: 5px 20px 5px 20px;
+}
+
+.row {
+    font-size: 24px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    
+    margin: 12px 34px;
+}
+
+label {
+    padding-right: 10px;
+    margin-right: 0px;
+    font-size: 24px;
+}
+
+button {
+    color: white;
+    background-color: rgb(178, 181, 185);
+    height: 50px;
+    width: 85px;
+    flex-grow: 1;
+    max-width: 110px;
+    border: 3px solid  rgb(130, 132, 134);
+    padding: 0 10px 0 10px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 22px;
+}
+
+.btn-group {
+    display: inline-flex;
+    flex: 1;
+    max-width: 260px;
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+.btn-group button:first-child {
+    border-radius: 10px 0 0 10px; /* round left borders */
+}
+
+.btn-group button:last-child {
+    border-radius: 0 10px 10px 0; /* round right borders */
+}
+
+button:hover {
+    background-color: rgb(164, 166, 170);
+}
+
+button:focus {
+    outline: none;
+}
+
+.pressed {
+    background-color: rgb(164, 166, 170);
+}
+
+@media (max-width: 1150px) {
+    .container {
+        width: min(100vw, 750px);
+        grid-template-columns: auto;
+        padding: 15px 25px 15px 25px;
+        gap: 15px;
+    }
+    #canvasContainer {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 540px) {
+    .container {
+        padding: 15px 10px 15px 10px;
+    }
+    #header {
+        font-size: 24px;
+    }
+    p {
+        font-size: 18px;
+    }
+    .row {
+        font-size: 20px;
+    }
+    label {
+        font-size: 20px;
+    }
+    button {
+        height: 40px;
+        max-width: 90px;
+        font-size: 20px;
+    }
+}

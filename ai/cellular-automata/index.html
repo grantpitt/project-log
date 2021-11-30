@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cellular Automaton</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Include the p5.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+
+</head>
+<body>
+    
+    <header class="header">
+        <h1> <a href="../">Computation</a></h1>
+        <h2> <a href="https://en.wikipedia.org/wiki/Cellular_automaton" target="_blank">Cellular Automaton</a></h2>
+    </header>
+
+    <section class="section">
+
+        <div class="tabs">
+
+            <input type="radio" name="tabs" id="tabone" checked="checked">
+            <label for="tabone">Info</label>
+            <div class="info-area tab">
+                <h2>Introduction</h2>
+                <p>A cellular automaton is discrete model for decentralized computation. The original state is generated randomly and every subsequent state is determined by the previous. Examples of decentralized computation include ant colonies, the economy, and our brains. Use the controls to see how to automaton reacts.</p>
+            </div>
+
+            <input type="radio" name="tabs" id="tabtwo">
+            <label for="tabtwo">Demo</label>
+            <div class="controls-area tab">
+                <h2>Controls</h2>
+                <!-- The controls to adjust parameters -->
+                
+            <div class="controls">
+                <!-- Each control is contained in a row div -->
+                <div class="row">
+                    <label>Rule</label>
+                    <div>
+                        <select name="famousRules" id="famousRules">
+                            <option value="345/2/4">Star Wars</option>
+                            <option value="/2/3">Brian's Brain</option>
+                            <option value="23/3/2">Conway's Life</option>
+                            <option value="345/24/25" selected>Bombers</option>
+                            <option value="3467/2678/6">Rake</option>
+                            <option value="45678/25678/4">SediMental</option>
+                        </select>
+                        <input type="text" id='rule' class="text-input">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label>Controls</label>
+                    <div class='btn-group'>
+                        <button id="start">Start</button>
+                        <button id="stop">Stop</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label>State</label>
+                    <div class='btn-group'>
+                        <button id="clear">Clear</button>
+                        <button id="randomize">Randomize</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label>Colors</label>
+                    <div>
+                        <button class="single-btn" id="changeColors">Change</button>
+                    </div>
+                </div>
+
+            </div>
+
+            </div>
+
+        </div>
+
+        <div class="demo-area">
+            <!-- The parent div for the p5.js canvas -->
+            <div id="canvasContainer"></div>
+        </div>
+
+    </section>
+
+    <!-- <script type="module" src="appData.js"></script> -->
+    <script src="main.js"></script>
+</body>
+</html>

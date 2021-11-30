@@ -1,0 +1,60 @@
+body {
+    background-color: rgb(247, 248, 248);
+    color: rgb(25, 26, 27);
+}
+
+h1 {
+    color: rgb(200, 50, 50);
+    font-size: 42px;
+}
+
+p, .row label {
+    color: inherit;
+    font-size: 22px;
+    text-align: justify;
+    font-weight: 300 !important;
+}
+
+#canvasContainer {
+    width: 100%;
+    margin: auto;
+}
+
+canvas {
+    outline: 4px solid rgb(200, 50, 50);
+}
+
+.container {
+    max-width: 550px;
+    margin: auto;
+}
+
+.matrix {
+    padding: 0;
+    margin: 0;
+    font-size: 0px;
+}
+.matrix input {
+    margin: 0;
+    width: 70px;
+    font-size: 32px;
+    font-family: inherit;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 0px;
+    border: none;
+    outline: 2px solid var(--harvard-dark-1);
+}
+
+.tabs input[type=radio]:checked + label {
+    border-bottom: 4px solid rgb(200, 50, 50);
+}
+.tabs label {
+    border-bottom: 4px solid var(--earth-grey-1);
+}
+
+#curSpacing {
+    display: inline-block;
+    min-width: 1.5em !important;
+    text-align: center;
+}

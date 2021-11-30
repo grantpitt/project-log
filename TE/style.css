@@ -1,0 +1,294 @@
+
+html, body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    color: #333333;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+#header {
+    box-sizing: border-box;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #dfdfdf;;
+    color: #333333;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 10px 25px 10px 25px;
+    word-wrap: break-word;
+
+    /* sticky boi */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 9;
+}
+
+a {
+    text-decoration: none;
+    color: #333333;
+}
+
+
+/* #outer {
+    box-sizing: border-box;
+    max-width: 1500px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    grid-template-columns: 50% 15px 1fr;
+    gap: 40px;
+} */
+
+#content {
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    
+}
+
+#cc {
+    width: 100%;
+    position: relative;
+    z-index: 9;
+    /* margin-top: 14px;
+    grid-column: span 2; */
+
+    /* overflow: scroll; */
+    /* background-color: rgba(68, 209, 209, 0.233); */
+    grid-row-start: 1;
+    grid-column-start: 1;
+    z-index: 1;
+}
+
+#postSection {
+    /* width: 100%; */
+    height: 100%;
+    /* background-color: rgba(227, 238, 77, 0.219); */
+    grid-row-start: 1;
+    grid-column-start: 1;
+    z-index: 1;
+    /* margin: auto; */
+    /* background-color: #3b85c3; */
+    /* background-color: #3b85c3; */
+}
+
+.post {
+    float: left;
+    margin: 25px;
+    width: 250px;
+    height: 300px;
+    background-color: rgb(231, 231, 231);
+    border: 1px solid rgb(156, 156, 156);
+    border-radius: 20px;
+    box-shadow: 0px 15px 55px 0px rgb(241, 241, 241);
+}
+
+.post p {
+    margin: 12.5px;
+}
+
+/* .post:hover {
+    background-color: rgb(209, 209, 209);
+} */
+
+.side {
+    box-sizing: border-box;
+    grid-column: span 1;
+    font-size: 24px;
+}
+
+/* @media (max-width: 1150px) {
+    .container {
+        width: min(100vw, 750px);
+        grid-template-columns: auto;
+        padding: 15px 25px 15px 25px;
+        gap: 15px;
+    }
+    #cc {
+        grid-column: span 1;
+    }
+} */
+
+/* @media (max-width: 540px) {
+    .container {
+        padding: 15px 10px 15px 10px;
+        gap: 15px;
+    }
+    #header {
+        font-size: 33px;
+    }
+    .side {
+        font-size: 20px;
+    }
+    button {
+        font-size: 20px;
+    }
+} */
+
+button {
+    color: white;
+    background-color: rgb(178, 181, 185);
+    height: 60px;
+    width: 50%;
+    flex-grow: 1;
+    border: 3px solid  rgb(130, 132, 134);
+    padding: 0 10px 0 1 10px;
+    font-size: 28px;
+}
+
+.btn-group {
+    display: inline-flex;
+    flex: 1;
+    /* max-width: 240px; */
+    max-width: 260px;
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+.btn-group button:first-child {
+    border-radius: 10px 0 0 10px; /* round left borders */
+}
+
+.btn-group button:last-child {
+    border-radius: 0 10px 10px 0; /* round right borders */
+}
+
+button:hover {
+    background-color: rgb(151, 153, 156);
+}
+
+button:focus {
+    outline: none;
+}
+
+
+
+/* The CSS for the slider between two blocks */
+#bodyContainer {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+#outer {
+    flex-grow : 1;
+    width: 100%;
+
+    display: flex;
+}
+
+/* .block {
+    width: 340px;
+} */
+
+#block1 {
+    /* background-color: rgb(228, 240, 255); */
+    width: 340px;
+    resize: horizontal; /* resize vertical */
+    overflow: hidden; /* resize works for overflow other than visible */
+}
+
+#block2 {
+    /* background-color: rgb(232, 234, 236); */
+    flex: 1;
+    min-width: 0;
+    overflow: hidden; /* hide overflow on small width */
+}
+
+#slider {
+    width: 8px;
+    background-color: rgba(0, 0, 0, 0);
+    /* border-left: 1px solid #dee2e6; */
+    cursor: ew-resize;
+    user-select: none; /* disable selection */
+}
+#line {
+    width: 1px;
+    margin: auto;
+    height: 100%;
+    background-color: #dfdfdf;
+    user-select: none; /* disable selection */
+}
+
+
+
+/* The CSS for the drag and drop utility */
+#drop-zone {
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    left: 20px;
+    top: 20px;
+    border: 2px dashed rgba(0,0,0,.3);
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    line-height: 180px;
+    font-size: 20px;
+    color: rgba(0,0,0,.3);
+}
+
+#drop-zone input {
+    /*Important*/
+    position: absolute;
+    /*Important*/
+    cursor: pointer;
+    left: 0px;
+    top: 0px;
+    /*Important This is only comment out for demonstration purposes. */
+    opacity: 0; 
+}
+
+/*Important*/
+#drop-zone.mouse-over {
+    border: 2px dashed rgba(0,0,0,.5);
+    color: rgba(0,0,0,.5);
+}
+
+/*If you dont want the button*/
+#clickHere {
+    position: absolute;
+    cursor: pointer;
+    left: 50%;
+    top: 50%;
+    margin-left: -50px;
+    margin-top: 20px;
+    line-height: 26px;
+    color: white;
+    font-size: 12px;
+    width: 100px;
+    height: 26px;
+    border-radius: 4px;
+    background-color: #3b85c3;
+
+}
+
+#clickHere:hover {
+    background-color: #4499DD;
+}
+
+
+/* #images {
+    background-color: violet;
+    width: 50%;
+    height: 20px;
+    margin: auto;
+} */
+
+img {
+    width: 225px;
+    height: 170px;
+    object-fit: cover;
+    object-position: 0 0;
+    border: 1px solid rgb(156, 156, 156);
+    border-radius: 10px;
+    margin: 12px;
+}

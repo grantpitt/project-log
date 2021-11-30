@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cellular Automaton</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="header">
+        <a href="../">Projects</a>
+        <span class="demarcation"> / </span>
+        <a href="https://en.wikipedia.org/wiki/Cellular_automaton" target="_blank">Cellular Automaton</a>
+    </h1>
+
+    <div class="rightParent parent" id="navbar">
+        <div class="options">
+            <fieldset id="controls">
+                <legend>Controls</legend>
+                
+                <button id="pp">Play/Pause</button>
+                <button id="new">New</button>
+            </fieldset>
+    
+            <fieldset id="rule">
+                <legend>Rule</legend>
+        
+                <input type="text" id="curRule" value="90">
+            </fieldset>
+        
+            <fieldset id="dynamics">
+                <legend>Dynamics</legend>
+    
+                <div>
+                    <label for="size">Size:</label>
+                    <input type="text" name="size" class="dim" id="size" value="100">
+                </div>
+        
+                <div>
+                    <label for="initial">Initial State:</label>
+                    <select name="initial" class="dim" id="initial">
+                        <option value="center">Center</option>
+                        <option value="pattern">Pattern</option>
+                        <option value="random" selected="selected">Random</option>
+                    </select>
+                </div>
+    
+                <div>
+                    <label for="states"># of States:</label>
+                    <select name="states" class="dim" id="states">
+                        <option value="2">2</option>
+                        <option value="3" selected="selected">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+            </fieldset>
+        
+            <fieldset id="style">
+                <legend>Style</legend>
+        
+                <div id="colors">
+                    <div>
+                        <label for="default" style="cursor:pointer;">Default Colors:</label>
+                        <input type="radio" class="color" name="color" value="default" id="default" checked>
+                    </div>
+                    <div>
+                        <label for="BW" style="cursor:pointer;">Grayscale:</label>
+                        <input type="radio" class="color" name="color" value="BW" id="BW">
+                    </div>
+                    <div>
+                        <label for="random" style="cursor:pointer;">Random Colors:</label>
+                        <input type="radio" class="color" name="color" value="random" id="random">
+                    </div>
+                </div>
+
+                <div class="darkMode">
+                    <label for="darkMode" style="cursor:pointer;">Dark Mode:</label>
+                    <input type="checkbox" name="darkMode" id="darkMode">
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <div class="leftParent parent">
+        <div class="eca">
+            <div id="grid">
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

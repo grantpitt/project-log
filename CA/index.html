@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cellular Automaton</title>
+
+    <link rel="shortcut icon" href="../icon.png" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+    <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+          <div class="topSection">
+                <button type="button" class="myclose" data-dismiss="modal">&times;</button>
+                <span class="modalTitle">Info</span>
+                <br>
+                <span class=modalText>A cellular automaton is discrete model for decentralized computation. The first row is generated automatically and every subsequenct row is determined by the previous. Examples of decentralized computation include ant colonies, the economy, and our brains. Use the controls or click a cell on the top row to see how to automaton reacts.</span>
+        </div>
+      
+    </div>
+  </div>
+
+    <div id="header">
+        <a href="../">Projects</a> / 
+        <a href="https://en.wikipedia.org/wiki/Cellular_automaton" target="_blank">Cellular Automaton</a>
+    </div>
+
+    <div class="mycontainer">
+
+        <div id="cc"></div>
+
+        <div class="side">
+            <fieldset id="controls">
+                <legend>Controls</legend>
+
+                <button id="new" type="button" class="my-btn">New</button>
+                
+            </fieldset>
+    
+            <fieldset id="rule">
+                <legend>Rule</legend>
+        
+                <input type="text" id="curRule" value="3806484360062277">
+            </fieldset>
+        
+            <fieldset id="dynamics">
+                <legend>Dynamics</legend>
+    
+                <div>
+                    <label for="size">Size:</label>
+                    <input type="text" name="size" class="dim" id="size" value="48">
+                </div>
+        
+                <div>
+                    <label for="initial">Initial States:</label>
+                    <select name="initial" class="dim" id="initial">
+                        <option value="center">Center</option>
+                        <option value="pattern">Pattern</option>
+                        <option value="rand" selected="selected">Random</option>
+                    </select>
+                </div>
+    
+                <div>
+                    <label for="states"># of States:</label>
+                    <select name="states" class="dim" id="states">
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4" selected="selected">4</option>
+                    </select>
+                </div>
+            </fieldset>
+        
+            <fieldset id="style">
+                <legend>Style</legend>
+        
+                <div id="colors">
+                    <div>
+                        <label for="default" style="cursor:pointer;">Default Colors:</label>
+                        <input type="radio" class="color" name="color" value="default" id="default" checked>
+                    </div>
+                    <div>
+                        <label for="rand" style="cursor:pointer;">Random Colors:</label>
+                        <input type="radio" class="color" name="color" value="rand" id="rand">
+                    </div>
+                    <div>
+                        <label for="BW" style="cursor:pointer;">Grayscale:</label>
+                        <input type="radio" class="color" name="color" value="BW" id="BW">
+                    </div>
+                    <div>
+                        <label for="isolate" style="cursor:pointer;">Isolate:</label>
+                        <input type="radio" class="color" name="color" value="isolate" id="isolate">
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    
+</body>
+</html>

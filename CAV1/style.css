@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap');
+
+body {
+    font-family: 'EB Garamond', serif;
+
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+
+    color: rgb(27, 27, 27);
+}
+
+#header {
+    box-sizing: border-box;
+    background-color: rgb(103, 172, 241);
+    font-size: 43px;
+    padding: 10px 60px 10px 60px;
+    word-wrap: break-word;
+
+    /* sticky boi */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+}
+
+.demarcation {
+    color: rgb(47, 47, 47);
+}
+
+#header a {
+    text-decoration: none;
+    color: rgb(47, 47, 47);
+}
+
+.parent {
+    position: absolute;
+    box-sizing: border-box;
+}
+
+.rightParent {
+    box-sizing: border-box;
+    right: 0px;
+    width: 35%;
+    padding: 0px 25px 0px 15px;
+}
+
+.leftParent {
+    left: 0px;
+    width: 65%;
+    padding: 0px 15px 0px 25px;
+}
+
+
+
+.eca {
+    padding-top: 29px;
+    width: 100%;
+}
+
+#grid {
+    margin-top: 9px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding-right: 0px;
+    margin-right: 0px;
+
+    border: 6px solid rgb(103, 172, 241);
+    border-radius: 4px;
+    background-color: rgb(103, 172, 241);
+}
+
+.node {
+    float: left;
+}
+
+
+
+.options {
+    padding-top: 32px;
+    width: 100%;
+    line-height: .45em;
+}
+
+legend {
+    font-size: 130%;
+    padding: 0px 6px 0px 6px;
+    box-sizing: border-box;
+}
+
+fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    font-size: 50%;
+
+    margin: auto;
+    width: 100%;
+    border: 6px solid rgb(103, 172, 241);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    align-content: space-around;
+    padding: 10px;
+}
+
+#controls {
+    justify-content: space-around;
+}
+
+#dynamics {
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#style {
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#colors {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: auto;
+    align-content: space-around;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+button {
+    font-family: 'EB Garamond', serif;
+    font-size: 120%;
+    height: 100px;
+    flex-grow: 1;
+    background-color: rgb(178, 181, 185);
+    border: 2px solid rgb(130, 132, 134);
+    border-radius: 7px;
+    color: white;
+    margin: 3px 9px 5px 10px;
+}
+
+button:hover {
+    background-color: rgb(151, 153, 156);
+}
+
+button:focus {
+    outline: none;
+}
+
+
+#curRule {
+    width: 100%;
+    font-size: 220%;
+    border: none;
+    padding-top: 0px;
+    padding-bottom: 7px;
+    font-family: 'EB Garamond', serif;
+    flex-grow: 1;
+    text-align: center;
+    color: rgb(27, 27, 27);
+    background-color: #00000000;
+}
+
+#curRule:focus {
+    outline: none;
+}
+
+
+
+
+
+fieldset div {
+    font-family: 'EB Garamond', serif;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+label {
+    padding-right: 7px;
+    margin-right: 0px;
+}
+
+.dim {
+    font-family: 'EB Garamond', serif;
+    font-size: 90%;
+    flex-grow: 1;
+    text-align: center;
+    border: 2px solid rgb(27, 27, 27);
+    border-radius: 5px;
+    color: rgb(27, 27, 27);
+    background-color: #00000000;
+}
+
+.dim:focus {
+    outline: none;
+}
+
+.color {
+    margin: 0px;
+}
+
+
+#initial {
+    width: 100px;
+}
+
+#size {
+    width: 40px;
+}
+
+#states {
+    width: 40px;
+}
+
+#darkMode {
+    margin-top: 15px;
+}
+
+

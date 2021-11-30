@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hungarian Algorithm</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="../styles/tab-demo.css">
+
+</head>
+<body>
+
+    <header class="header">
+        <h1> <a href="../">Projects</a></h1>
+        <h2> <a href="https://en.wikipedia.org/wiki/Hungarian_algorithm" target="_blank">Hungarian Algorithm</a></h2>
+    </header>
+
+    <section class="section">
+
+        <div class="tabs">
+
+            <input type="radio" name="tabs" id="tabone" checked="checked">
+            <label for="tabone">Info</label>
+            <div class="info-area tab">
+                <h2>Introduction</h2>
+                <p>The Hungarian algorithm solves the assignment problem. In this 
+                    demo, that means minimizing or maximizing the overall distance 
+                    between pairs of points. Drag the points around to see how the matchings 
+                    change!</p>
+            </div>
+
+            <input type="radio" name="tabs" id="tabtwo">
+            <label for="tabtwo">Demo</label>
+            <div class="controls-area tab">
+                <h2>Controls</h2>
+                <!-- The controls to adjust parameters -->
+                
+                <div class="controls">
+                    <!-- Each control is contained in a row div -->
+                    <div class="row">
+                        <label>Variant</label>
+                        <div class='btn-group'>
+                            <button id="minimize">Min</button>
+                            <button id="maximize">Max</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label>Points</label>
+                        <div>
+                            <button id="new" class="single-btn">New</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="demo-area">
+            <!-- The parent div for the p5.js canvas -->
+            <div id="canvasContainer"></div>
+        </div>
+
+    </section>
+
+    <script src="main.js"></script>
+    
+</body>
+</html>

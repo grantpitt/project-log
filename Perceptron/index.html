@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perceptron</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Include the p5.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+
+</head>
+<body>
+    
+    <header class="header">
+        <h1> <a href="../">ai</a></h1>
+        <h2> <a href="https://en.wikipedia.org/wiki/Perceptron" target="_blank">Perceptron</a></h2>
+    </header>
+
+    <section class="section">
+
+        <div class="tabs">
+
+            <input type="radio" name="tabs" id="tabone" checked="checked">
+            <label for="tabone">Info</label>
+            <div class="info-area tab">
+                <h2>Introduction</h2>
+                <p>The perceptron is a simple ML classification algorithm and the building block of neural networks. It attempts to linearly seperate the classes of data. In this example, you can drag the points around or add and remove them below. Move the points around to see the perceptron learn the dataset!</p>
+            </div>
+
+            <input type="radio" name="tabs" id="tabtwo">
+            <label for="tabtwo">Demo</label>
+            <div class="controls-area tab">
+                <h2>Controls</h2>
+                <!-- The controls to adjust parameters -->
+                
+                <div class="controls">
+                    <!-- Each control is contained in a row div -->
+                    <div class="row">
+                        <label>Datapoints</label>
+                        <div class='btn-group'>
+                            <button id="add">Add</button>
+                            <button id="take">Take</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="demo-area">
+            <!-- The parent div for the p5.js canvas -->
+            <div id="canvasContainer"></div>
+        </div>
+
+    </section>
+
+    <!-- <script type="module" src="appData.js"></script> -->
+    <script src="main.js"></script>
+</body>
+</html>

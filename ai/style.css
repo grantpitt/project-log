@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Mada:wght@300;400;500;600;700;900&display=swap');
+
+:root {
+    --harvard-dark-1: #0e0e0e;
+    --harvard-dark-2: #1e1e1e;
+    --harvard-dark-3: #656f77;
+
+    --texas-orange-1: #f8971f;
+    --texas-orange-2: #bf5700;
+    --texas-orange-3: #a04400;
+
+    --earth-grey-1: #f5f5f5f5;
+    --earth-grey-2: #DEDEDE;
+    --earth-grey-3: #C7C7C7;
+    --earth-grey-4: #B0B0B0;
+    --earth-grey-5: #999999;
+    --earth-grey-6: #828282;
+
+    --north-blue-1: #43B0F1;
+    --north-blue-2: #057DCD;
+    --north-blue-3: #1E3D58;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Mada', sans-serif;
+    overflow-x: hidden;
+
+    color: var(--earth-grey-1);
+    background-color: var(--harvard-dark-1);
+}
+
+.header {
+    box-sizing: border-box;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    /* flex gap is great but not possible on safari */
+    /* gap: 1rem; */
+    padding: 35px 80px;
+
+    width: 100%;
+}
+
+.header h1 {
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0px;
+    padding-right: 1rem;
+}
+
+.header h2 {
+    font-size: 34px;
+    font-weight: 400;
+    color: var(--north-blue-1);
+    margin: 0px;
+}
+
+.section {
+    box-sizing: border-box;
+    max-width: 1050px;
+    margin: auto;
+    padding: 10px 30px;
+}
+
+#appGrid {
+    box-sizing: border-box;
+    width: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin-top: -.75rem;;
+}
+
+.app h3 {
+    margin: 0px;
+    color: var(--earth-grey-2);
+    word-wrap: break-word;
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.app h4 {
+    margin: 0px;
+    color: var(--north-blue-2);
+    word-wrap: break-word;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+
+.link {
+    box-sizing: border-box;
+    width: calc(50% - 1.5rem);
+    margin: .75rem;
+    display: block;
+    border: 2px solid var(--earth-grey-6);
+    padding: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.link:hover {
+    background-color: var(--harvard-dark-2);
+}

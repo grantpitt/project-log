@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyclic Groups</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <div id="header">
+        <a href="../">Projects</a> / 
+        <a href="https://en.wikipedia.org/wiki/Cyclic_group" target="_blank">Cyclic Groups</a>
+    </div>
+
+    <div class="container">
+
+        <div id="cc"></div>
+
+        <div class="side">
+            <p>  
+                Enter an \(n\) to generate the graph of cyclic subgroups of the group \((\mathbb{Z/}n\mathbb{Z}, +)\)
+            </p>
+            <div>
+                <hr>
+                <div class="controls">
+                    <div class="row">
+                        <label>\(n\)</label>
+                        <input type="text" id="n" value="18">
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <span id="info"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    
+</body>
+</html>

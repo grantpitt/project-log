@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Naïve Bayes 2</title>
+    <link rel="shortcut icon" href="../icon.png" />
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Include the p5.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header">
+        <a href="../">Projects</a> / 
+        <a href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier" target="_blank">Naïve Bayes 2</a>
+    </div>
+
+    <!-- The container to space out canvas and panel responsively -->
+    <div class="container">
+
+        <!-- The parent div for the p5.js canvas -->
+        <div id="canvasContainer"></div>
+
+        <!-- The panel with discription and controls -->
+        <div class="panel">
+            <!-- The discription -->
+            <p>
+                Gaussian naïve Bayes makes the assumption that the features of any given vector that have the same label have a Gaussian distribution 
+                and are conditionally independent of the other features. Drag the points around to see how the distributions 
+                change!
+            </p>
+            <hr>
+            <!-- The controls to adjust parameters -->
+            <div class="controls">
+                <!-- Each control is contained in a row div -->
+                <div class="row">
+                    <label>Classes</label>
+                    <div class='btn-group'>
+                        <button id="add">Add</button>
+                        <button id="take">Take</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label>Points</label>
+                    <div style="display: inline-flex;flex: 1;max-width: 240px;">
+                        <button style="border-radius: 10px;" id="new">New</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label>Gaussian</label>
+                    <div class='btn-group'>
+                        <button id="gaussianOn">On</button>
+                        <button id="gaussianOff">Off</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label>KDE</label>
+                    <div class='btn-group'>
+                        <button id="kdeOn">On</button>
+                        <button id="kdeOff">Off</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label><a href="../KernelDensityEstimation/">Bandwidth</a></label>
+                    <input type="range" min="0.03" max="0.7" value="0.1" step="0.01" class="slider" id="bandwidth">
+                        (<span id="curBW"></span>)
+                </div>
+
+            </div>
+            <!-- End of controls -->
+        </div>
+        <!-- End of the panel -->
+    </div>
+    <!-- End of the body Container -->
+
+    <!-- Link the JS script -->
+    <script src="main.js"></script>
+    
+</body>
+</html>

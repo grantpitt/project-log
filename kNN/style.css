@@ -1,0 +1,179 @@
+/* Include the PT Sans font */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+
+html, body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 400;
+    color: rgb(47, 47, 47);
+    overflow-x: hidden;
+}
+
+#header {
+    box-sizing: border-box;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #dfdfdf;
+    color: inherit;
+    font-weight: 700;
+    font-size: 28px;
+    padding: 10px 25px 10px 25px;
+    word-wrap: break-word;
+
+    /* sticky boi */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 9;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    box-sizing: border-box;
+    max-width: 1450px;
+    margin: auto;
+    padding: 30px 140px 30px 140px;
+    /* The Container is a grid; originally, the canvas spans 2 columns and the panel spans 1*/
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    gap: 40px;
+}
+
+#cc {
+    grid-column: span 2;
+}
+
+canvas {
+    margin: auto;
+    outline: 2px solid #dfdfdf;
+}
+
+
+.side {
+    box-sizing: border-box;
+    grid-column: span 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+p {
+    font-size: 18px;
+    word-wrap: break-word;
+    text-align: justify;
+    max-width: 385px;
+    margin: 0 auto 0 auto;
+}
+
+hr {
+    margin: 4% 0 5% 0;
+    border: none;
+    height: 2px;
+    background-color: #dfdfdf;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.row {
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 22px;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+label {
+    padding-right: 16px;
+    margin-right: 0px;
+    font-size: 22px;
+}
+
+button {
+    color: white;
+    background-color: rgb(178, 181, 185);
+    height: 50px;
+    width: 40%;
+    flex-grow: 1;
+    max-width: 110px;
+    border: 3px solid  rgb(130, 132, 134);
+    padding: 0 10px 0 10px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 22px;
+}
+
+.btn-group {
+    display: inline-flex;
+    flex: 1;
+    max-width: 240px;
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+.btn-group button:first-child {
+    border-radius: 10px 0 0 10px; /* round left borders */
+}
+
+.btn-group button:last-child {
+    border-radius: 0 10px 10px 0; /* round right borders */
+}
+
+button:hover {
+    background-color: rgb(151, 153, 156);
+}
+
+button:focus {
+    outline: none;
+}
+
+.pressed {
+    background-color: rgb(151, 153, 156);
+}
+
+
+@media (max-width: 1150px) {
+    .container {
+        width: min(100vw, 750px);
+        grid-template-columns: auto;
+        padding: 15px 25px 15px 25px;
+        gap: 15px;
+    }
+    #cc {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 540px) {
+    .container {
+        padding: 15px 10px 15px 10px;
+    }
+    #header {
+        font-size: 24px;
+    }
+    p {
+        font-size: 18px;
+    }
+    .row {
+        font-size: 20px;
+    }
+    label {
+        font-size: 20px;
+    }
+    button {
+        height: 40px;
+        max-width: 90px;
+        font-size: 20px;
+    }
+}
