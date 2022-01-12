@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Punctuation Analysis</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1 class="title">Punctuation Analysis</h1>
+  <div class="search-section">
+    <div class="search-and-options">
+      <form id="form">
+        <svg xmlns="http://www.w3.org/2000/svg" class="search-icon" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input id="search-text" autocomplete="off" placeholder='Search for a book (ex: "Huckleberry Finn")' type="text">
+      </form>
+      <div id="options">
+
+      </div>
+    </div>
+  </div>
+  <div class="grid">
+    <div id="highlight-box" class="box">
+      <pre id="highlight" class="book"></pre>
+    </div>
+    <div id="plain-box" class="box">
+      <pre id="plain" class="book"></pre>
+    </div>
+    <div class="box">
+      <div id="art">
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
+</html>
