@@ -7,40 +7,55 @@ const art = document.getElementById("art");
 const options = document.getElementById("options");
 const form = document.getElementById('form');
 
-async function main() {
+async function onBookSeach() {
+  const search = searchText.value;
+  const searchResults = await searchBook(search);
+  displaySearchResults(searchResults);
+}
+
+async function onBookSelect(id) {
+  const book = await getBook(id);
+  plain.innerText = book;
+  const [punctuation, highlightText] = collectPunctuationAndHighlight(book);
+
+  highlight.innerHTML = highlightText;
+  art.innerHTML = getArtGrid(punctuation).join("");
+}
+
+async function searchBook(search) {
   const requestOptions = {
     method: "GET",
     redirect: "follow",
   };
-
   const params = new URLSearchParams({
-    search: searchText.value,
+    search: search,
   });
-
   const url = `https://gutendex.com/books?${params.toString()}`;
 
   const response = await fetch(url, requestOptions);
   const data = await response.json();
 
-  const results = data.results;
+  return data.results;
+}
 
+function displaySearchResults(results) {
   options.textContent = "";
-  for (let result of results) {
+  results.forEach((result) => {
     const input = document.createElement("input");
     input.type = "radio";
     input.id = result.id;
-    input.name = "book"
+    input.name = "book";
     input.value = result.id;
-    
+
     const label = document.createElement("label");
     label.for = result.id;
     label.innerText = result.title;
-    label.onclick = () => getBook(result.id)
-    
+    label.onclick = () => onBookSelect(result.id);
+
     options.append(input);
     options.append(label);
-  }
-  options.style.display = "block"
+  });
+  options.style.display = "block";
 }
 
 async function getBook(id) {
@@ -57,24 +72,22 @@ async function getBook(id) {
     }
   );
 
-  const bookText = await response.text();
-
-  plain.innerText = bookText;
-
-  const regex = /["“’”',/*/./!?]/g;
-
-  const matches = [];
-
-  const punctuation = bookText.replace(regex, (match) => {
-    matches.push(match);
-    return '<span class="punct">' + match + "</span>";
-  });
-  highlight.innerHTML = punctuation;
-  artGrid = matches.map(match => '<div class="cell">' + match + "</div>")
-  art.innerHTML = artGrid.join("");
+  return await response.text();
 }
 
-bindSyncScrolling(highlightBox, plainBox);
+function collectPunctuationAndHighlight(bookText) {
+  const punctuation = [];
+  const regex = /["“’”',/*/./!?]/g;
+  const highlightText = bookText.replace(regex, (match) => {
+    punctuation.push(match);
+    return '<span class="punct">' + match + "</span>";
+  });
+  return [punctuation, highlightText];
+}
+
+function getArtGrid(matches) {
+  return matches.map((match) => '<div class="cell">' + match + "</div>");
+}
 
 function bindSyncScrolling(one, two) {
   let echo = false,
@@ -85,8 +98,10 @@ function bindSyncScrolling(one, two) {
   one.onscroll = sync(two, one);
 }
 
+bindSyncScrolling(highlightBox, plainBox);
+
 form.onsubmit = (event) => {
   searchText.blur();
-  main();
+  onBookSeach();
   event.preventDefault();
 };
