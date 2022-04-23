@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time Left</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
+
+  <link rel="stylesheet" href="../raster2.css" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
+
+    html {
+      font-family: "Inter", sans-serif;
+      max-height: 100vh;
+    }
+
+    @supports (font-variation-settings: normal) {
+      html {
+        font-family: "Inter var", sans-serif;
+      }
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      color: white;
+    }
+
+    #time {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 10rem;
+      line-height: 10rem;
+      margin-bottom: 3rem;
+    }
+
+    .description {
+      font-size: 3rem;
+      font-weight: 600;
+    }
+
+    .marquee {
+      width: 100vw;
+      position: absolute;
+      top: 0;
+      font-size: 2rem;
+      line-height: 4rem;
+
+      white-space: nowrap;
+      overflow: hidden;
+      box-sizing: border-box;
+
+      z-index: 99;
+    }
+
+    .marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 2200s linear infinite;
+      -webkit-animation: webkit-marquee 2200s linear infinite;
+    }
+
+    @-webkit-keyframes webkit-marquee {
+      0% {
+        -webkit-transform: translate(0, 0);
+      }
+
+      100% {
+        -webkit-transform: translate(-100%, 0);
+      }
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      100% {
+        transform: translate(-100%, 0);
+      }
+    }
+
+    #headlines a {
+      margin-right: 2.5rem;
+      text-decoration: none;
+    }
+
+    #canvas {
+      position: absolute;
+      z-index: -99;
+      max-height: 100vh;
+      overflow: hidden;
+      max-width: 100vw;
+    }
+
+    #controls {
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: stretch;
+      padding: 2rem;
+
+      background-color: rgba(0, 0, 0, 0.75);
+      border: 2px solid black;
+      border-radius: 8px;
+
+      font-size: 16px;
+    }
+
+    #controls div {
+      margin: 4px 0;
+    }
+
+    #controls label {
+      margin-right: 1rem;
+    }
+
+    #controls input[type="range"] {
+      width: 330px;
+      float: right;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="canvas"></div>
+
+  <div class="marquee">
+    <span id="headlines"></span>
+  </div>
+
+  <div id="time"></div>
+  <div class="description">seconds left in the day</div>
+
+  <div id="controls" style="display: none;">
+    <div>
+      <label>Worm Count</label>
+      <input name="wormCount" type="range" value="10" min="1" max="200" step="1" @change="parse" />
+    </div>
+    <div>
+      <label>Magnetude Step</label>
+      <input name="magnetudeStep" type="range" value="10" min="1" max="100" step="1" @change="parse" />
+    </div>
+    <div>
+      <label>Direction Step</label>
+      <input name="directionStep" type="range" value="0.008" min="0" max="1" step="0.001" @change="parse" />
+    </div>
+    <div>
+      <label>Direction Space Multiple</label>
+      <input name="directionNoiseSpaceMultiplier" type="range" value="3" min="1" max="100" step="1" @change="parse" />
+    </div>
+    <div>
+      <label>Hue Step</label>
+      <input name="hueStep" type="range" value="0.6" min="0" max="15" step="0.01" @change="parse" />
+    </div>
+    <div>
+      <label>Weight</label>
+      <input name="weight" type="range" value="20" min="1" max="200" step="1" @change="parse" />
+    </div>
+    <div>
+      <label>Frame Rate</label>
+      <input name="fr" type="range" value="40" min="1" max="120" step="1" @change="parse" />
+    </div>
+    <div>
+      <button @click="toggleInvert">Invert</button>
+    </div>
+    <div>
+      <button @click="restart">Restart</button>
+    </div>
+  </div>
+  </div>
+
+  <script>
+    const time = document.getElementById("time");
+    const headlines = document.getElementById("headlines");
+
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    async function getSlugs() {
+      const response = await fetch("slugs.txt");
+      const slug_file = await response.text();
+      return slug_file;
+    }
+
+
+    async function setSlugs() {
+      const slug_file = await getSlugs();
+      const slugs = slug_file.split("\n");
+      shuffleArray(slugs);
+      slugs.forEach((slug) => {
+        const link = document.createElement("a");
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.href = "https://en.wikipedia.org/wiki/" + slug;
+        link.innerText = decodeURI(slug);
+        headlines.appendChild(link);
+      });
+    }
+
+    setSlugs();
+
+    let end = new Date();
+    end.setHours(23, 59, 59, 999);
+
+    function updateTime() {
+      let millisecondsLeft = end - new Date();
+
+      if (millisecondsLeft < 0) {
+        let end = new Date();
+        end.setHours(23, 59, 59, 999);
+        millisecondsLeft = end - new Date();
+      }
+
+      const seconds = millisecondsLeft / 1000;
+      time.innerText = seconds.toFixed(1);
+      setTimeout(() => requestAnimationFrame(updateTime), 10);
+    }
+
+    updateTime();
+
+    let state = new Vue({
+      el: "#controls",
+      data: {
+        worms: [],
+        wormCount: 10,
+        magnetudeStep: 10,
+        directionStep: 0.006,
+        hueStep: 0.6,
+        directionNoiseSpaceMultiplier: 3,
+        invertRotation: false,
+        weight: 20,
+        fr: 40,
+      },
+      methods: {
+        parse(event) {
+          const { name, value } = event.target;
+          this[name] = parseFloat(value);
+        },
+        toggleInvert() {
+          this.invertRotation = !this.invertRotation;
+        },
+        restart() {
+          background(6);
+          makeWorms();
+        }
+      }
+    });
+
+    function onKonamiCode(callback) {
+      var input = "";
+      var key = "38384040373937396665";
+      document.addEventListener('keydown', function (e) {
+        input += ("" + e.keyCode);
+        if (input === key) {
+          return callback();
+        }
+        if (!key.indexOf(input)) return;
+        input = ("" + e.keyCode);
+      });
+    }
+    const controls = document.getElementById("controls");
+    function toggleControlsView() {
+      controls.style.display = controls.style.display === "none" ? "flex" : "none";
+    }
+
+    onKonamiCode(toggleControlsView);
+
+    // TODO:
+    // clean up code
+    // finish up the personal website, then go live with this stuff
+
+    function makeWorms() {
+      const { wormCount } = state;
+      state.worms = [];
+      for (let i = 0; i < wormCount; i++) {
+        state.worms.push({
+          base: createVector(
+            random(100, width - 100),
+            random(100, height - 100)
+          ),
+          hue: random(360),
+          time: random(1000),
+        });
+      }
+    }
+
+    function setup() {
+      let cnv = createCanvas(window.innerWidth, window.innerHeight);
+      cnv.parent("canvas");
+      colorMode(HSL);
+
+      background(6);
+      makeWorms();
+    }
+
+    function draw() {
+
+      const {
+        worms,
+        magnetudeStep,
+        directionStep,
+        hueStep,
+        invertRotation,
+        weight,
+        fr,
+        directionNoiseSpaceMultiplier
+      } = state;
+
+      frameRate(fr);
+
+      worms.forEach((worm) => {
+        push();
+        stroke(worm.hue, 80, 50);
+        strokeWeight(weight);
+        const direction = noise(worm.time) * TAU * directionNoiseSpaceMultiplier;
+
+
+        translate(worm.base.x, worm.base.y);
+        const invertMultiplier = invertRotation ? 1 : -1;
+        rotate(invertMultiplier * direction);
+
+        line(0, 0, 0, magnetudeStep);
+
+        worm.base.x += sin(direction) * magnetudeStep;
+        worm.base.y += cos(direction) * magnetudeStep;
+
+        worm.time += directionStep;
+
+        worm.hue += hueStep;
+        worm.hue %= 360;
+
+        pop();
+      });
+
+    }
+  </script>
+</body>
+
+</html>
